@@ -1,0 +1,32 @@
+replicaCount: 1
+
+image:
+  repository: gcr.io/<project-id>/<repo.name>
+  tag: <tag>
+  pullPolicy: Always
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  path: /
+  hosts:
+    - chart-example.local
+  tls: []
+
+
+resources:
+  limits:
+    cpu: ".5"
+    memory: "1000Mi"
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
